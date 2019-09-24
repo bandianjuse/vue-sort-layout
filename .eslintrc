@@ -1,0 +1,22 @@
+{
+  "parserOptions": {
+    "ecmaVersion": 7,
+    "sourceType": "module"
+  },
+  "rules": {
+    "linebreak-style": "off",
+    "no-undef": "off",
+    "no-trailing-spaces": "off",
+    "no-multiple-empty-lines": "off",
+    "eol-last": "off",
+    "no-underscore-dangle": "off",
+    // "indent": [
+    //     "error",
+    //     4
+    // ]
+  },
+  "extends": ["plugin:vue/essential","airbnb-base"],
+  "plugins": [
+    "vue"
+  ]
+}
