@@ -3876,7 +3876,7 @@
       },
       nested: {
         type: Boolean,
-        default: true
+        default: false
       },
       group: [String, Object],
       expand: {
