@@ -1,13 +1,20 @@
 {
   "name": "vue-sort-layout",
   "version": "0.1.0",
-  "description": "",
-  "main": "rollup.config.js",
+  "description": "一个vue.js的排序布局组件",
+  "main": "lib/main.js",
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "dev": "concurrently 'npm:dev:*'",
     "dev:src": "rollup -c -w",
     "dev:examples": "rollup -c rollup.config.examples.js -w"
   },
+  "keywords": [
+    "vue.js",
+    "sort"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bandianjuse/vue-sort-layout.git"

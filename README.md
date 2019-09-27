@@ -1,6 +1,6 @@
 # vue-sort-layout
 
-> 一个vue.js的排序布局组件。基于SortableJS。
+> 一个vue.js的排序布局组件，基于SortableJS。
 
 
 ## 安装

@@ -1008,6 +1008,7 @@
   var Safari = userAgent(/safari/i) && !userAgent(/chrome/i) && !userAgent(/android/i);
   var IOS = userAgent(/iP(ad|od|hone)/i);
   var ChromeForAndroid = userAgent(/chrome/i) && userAgent(/android/i);
+
   var captureMode = {
     capture: false,
     passive: false
@@ -2395,6 +2396,7 @@
       } catch (err) {}
     },
     _dragStarted: function _dragStarted(fallback, evt) {
+
       awaitingDragStarted = false;
 
       if (rootEl && dragEl) {
@@ -3512,6 +3514,7 @@
 
 
   Sortable.version = version;
+
   var autoScrolls = [],
       scrollEl,
       scrollRootEl,
@@ -3554,8 +3557,9 @@
         }
       },
       dragOverCompleted: function dragOverCompleted(_ref2) {
-        var originalEvent = _ref2.originalEvent; // For when bubbling is canceled and using fallback (fallback 'touchmove' always reached)
+        var originalEvent = _ref2.originalEvent;
 
+        // For when bubbling is canceled and using fallback (fallback 'touchmove' always reached)
         if (!this.options.dragOverBubble && !originalEvent.rootEl) {
           this._handleAutoScroll(originalEvent);
         }
@@ -3820,7 +3824,7 @@
   });
 
   Sortable.mount(new AutoScrollPlugin());
-  Sortable.mount(Remove, Revert); //
+  Sortable.mount(Remove, Revert);
 
   function getListFromNodes(nodes) {
     const newList = [];
