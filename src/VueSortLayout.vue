@@ -1,18 +1,31 @@
 <template>
-  <div ref="root">
-    <slot></slot>
-  </div>
+  <div><slot></slot></div>
 </template>
 
 <script>
 import Sortable from 'sortablejs';
 
+function getListFromNodes(nodes) {
+  const newList = [];
+  nodes.forEach((node) => {
+    newList.push(node.dataItem);
+  });
+  return newList;
+}
+function eventFun(name, event) {
+  this.$emit(name, event);
+}
 export default {
   data() {
     return {
-      basisOptions: {
+      options: {
         animation: 150,
+        onAdd: this.onAdd,
         onSort: this.onSort,
+        onRemove: this.onRemove,
+        onStart: eventFun.bind(this, 'onStart'),
+        onEnd: eventFun.bind(this, 'onEnd'),
+        onClone: eventFun.bind(this, 'onClone'),
       },
     };
   },
@@ -25,68 +38,83 @@ export default {
       type: Array,
       default: () => [],
     },
+    filter: {
+      type: String,
+      default: '',
+    },
+    sort: {
+      type: Boolean,
+      default: true,
+    },
+    handle: {
+      type: String,
+      default: '',
+    },
+    ghostClass: {
+      type: String,
+      default: '',
+    },
+    nested: {
+      type: Boolean,
+      default: true,
+    },
     group: [String, Object],
-    options: {
+    expand: {
       type: Object,
       default: () => {},
     },
   },
-  provide() {
-    const rootOptions = Object.assign(this.basisOptions, this.options);
-    return {
-      uid: this._uid,
-      rootOptions,
-    };
-  },
   methods: {
+    onAdd(event) {
+      const nodes = event.to.childNodes;
+      this.$emit('change', getListFromNodes(nodes));
+      nodes.forEach((node) => node === event.item && node.remove());
+      
+      this.$emit('onAdd', event);
+    },
+    onRemove(event) {
+      if (event.pullMode === true) {
+        this.$emit('change', getListFromNodes(event.from.childNodes));
+      }
+      this.$emit('onRemove', event);
+    },
     onSort(event) {
-      this.updatePosition(event.item.dataItem);
+      if (event.pullMode === undefined) {
+        this.$emit('change', getListFromNodes(event.to.childNodes));
+      }
+      this.$emit('onSort', event);
     },
    
-    // onAdd(event) {
-    //   // const { newIndex, oldIndex } = event;
-    //   console.log('onAdd', event);
-    //   // this.list.splice(newIndex, 0, this.list.splice(oldIndex, 1)[0]);
-    // },
-    updatePosition(curDataItem) {
-      const newList = [];
-      this.$refs.root.childNodes.forEach((node) => {
-        if (node.dataItem) {
-          newList.push(node.dataItem);
-        } else {
-          newList.push(curDataItem);
-        }
-      });
-      console.log(this.$refs.root.childNodes);
-      this.$emit('change', newList);
-    },
-    setElchildNodes(root) {
-      const disableIds = this.list.filter((item) => item.disable).map((item) => item.id);
-    
-      root.childNodes.forEach((node, i) => {
-        const n = node;
-        n.dataItem = this.list[i];
-        if (disableIds.indexOf(i) >= 0) {
-          const className = node.getAttribute('class');
-          n.setAttribute('class', className.concat(' disable'));
-          this.basisOptions.filter = '.disable';
-        }
-      });
-    },
     setProps() {
-      if (this.group) this.basisOptions.group = this.group;
+      if (this.nested) {
+        this.options.group = 'nested';
+        this.options.fallbackOnBody = true;
+        this.options.swapThreshold = 0.65;
+      }
+      if (this.group) this.options.group = this.group;
+      if (this.filter) this.options.filter = `.${this.filter}`;
+      if (this.handle) this.options.handle = `.${this.handle}`;
+      if (this.ghostClass) this.options.ghostClass = this.ghostClass;
+      
+
+      this.options.sort = this.sort;
+    },
+    createSortable() {
+      const rootOptions = Object.assign(this.options, this.expand);
+      this.$el.childNodes.forEach((node, index) => {
+        const n = node;
+        n.dataItem = this.list[index];
+      });
+      this.setProps();
+      if (this.sortable !== undefined) this.sortable.destroy();
+      this.sortable = new Sortable(this.$el, rootOptions);
     },
   },
   updated() {
-    this.setElchildNodes(this.$refs.root);
+    this.createSortable();
   },
   mounted() {
-    if (this.$children.length) return;
-    const { root } = this.$refs;
-    const rootOptions = Object.assign(this.basisOptions, this.options);
-    this.setElchildNodes(root);
-    this.setProps();
-    Sortable.create(root, rootOptions);
+    this.createSortable();
   },
 };
 </script>

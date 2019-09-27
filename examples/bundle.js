@@ -1,69 +1,26 @@
 (function () {
   'use strict';
 
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
+  function _toConsumableArray(arr) {
+    return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread();
+  }
+
+  function _arrayWithoutHoles(arr) {
+    if (Array.isArray(arr)) {
+      for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) arr2[i] = arr[i];
+
+      return arr2;
+    }
+  }
+
+  function _iterableToArray(iter) {
+    if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter);
+  }
+
+  function _nonIterableSpread() {
+    throw new TypeError("Invalid attempt to spread non-iterable instance");
+  }
+
   //
   //
   //
@@ -74,53 +31,22 @@
   //
   //
   var script = {
-    data: function data() {
-      return {
-        list: [{
-          name: 'Jaa',
-          id: 0
-        }, {
-          name: 'Jbb',
-          id: 1,
-          disable: true
-        }, {
-          name: 'Jcc',
-          id: 2
-        }, {
-          name: 'Jee',
-          id: 3
-        }],
-        list2: [{
-          name: 'Jaa',
-          id: 0
-        }, {
-          name: 'Jbb',
-          id: 1
-        }, {
-          name: 'Jcc',
-          id: 2
-        }, {
-          name: 'Jee',
-          id: 3
-        }],
-        list3: [{
-          name: 'Jff',
-          id: 4
-        }, {
-          name: 'Jhh',
-          id: 5
-        }, {
-          name: 'Jii',
-          id: 6
-        }, {
-          name: 'Jjj',
-          id: 7
-        }],
-        setOptions: {
-          ghostClass: 'blue-background-class'
+    name: 'nested-layout',
+    model: {
+      prop: 'list',
+      event: 'change'
+    },
+    computed: {
+      nList: {
+        get: function get() {
+          return this.list;
+        },
+        set: function set(val) {
+          this.$emit('change', val);
         }
-      };
-    }
+      }
+    },
+    props: ['list', 'nested']
   };
 
   function normalizeComponent(template, style, script, scopeId, isFunctionalTemplate, moduleIdentifier
@@ -208,6 +134,297 @@
 
   var normalizeComponent_1 = normalizeComponent;
 
+  /* script */
+  const __vue_script__ = script;
+
+  /* template */
+  var __vue_render__ = function() {
+    var _vm = this;
+    var _h = _vm.$createElement;
+    var _c = _vm._self._c || _h;
+    return _c(
+      "vue-sort-layout",
+      {
+        attrs: { nested: _vm.nested },
+        model: {
+          value: _vm.nList,
+          callback: function($$v) {
+            _vm.nList = $$v;
+          },
+          expression: "nList"
+        }
+      },
+      _vm._l(_vm.nList, function(item) {
+        return _c(
+          "div",
+          { key: item.id, staticClass: "list-group-item" },
+          [
+            _vm._v("\n        " + _vm._s(item.name) + "\n        "),
+            _c("nested-layout", {
+              attrs: { nested: item.nested },
+              model: {
+                value: item.children,
+                callback: function($$v) {
+                  _vm.$set(item, "children", $$v);
+                },
+                expression: "item.children"
+              }
+            })
+          ],
+          1
+        )
+      }),
+      0
+    )
+  };
+  var __vue_staticRenderFns__ = [];
+  __vue_render__._withStripped = true;
+
+    /* style */
+    const __vue_inject_styles__ = undefined;
+    /* scoped */
+    const __vue_scope_id__ = undefined;
+    /* module identifier */
+    const __vue_module_identifier__ = undefined;
+    /* functional template */
+    const __vue_is_functional_template__ = false;
+    /* style inject */
+    
+    /* style inject SSR */
+    
+
+    
+    var nestedLayout = normalizeComponent_1(
+      { render: __vue_render__, staticRenderFns: __vue_staticRenderFns__ },
+      __vue_inject_styles__,
+      __vue_script__,
+      __vue_scope_id__,
+      __vue_is_functional_template__,
+      __vue_module_identifier__,
+      undefined,
+      undefined
+    );
+
+  var list2 = [{
+    name: 'AAA',
+    id: 0
+  }, {
+    name: 'BBB',
+    id: 1
+  }, {
+    name: 'CCC',
+    id: 2
+  }, {
+    name: 'DDD',
+    id: 3
+  }];
+  var list3 = [{
+    name: 'EEE',
+    id: 4,
+    active: true
+  }, {
+    name: 'FFF',
+    id: 5,
+    active: true
+  }, {
+    name: 'HHH',
+    id: 6,
+    active: true
+  }, {
+    name: 'III',
+    id: 7,
+    active: true
+  }];
+  var list4 = [{
+    name: 'AAA',
+    id: 0
+  }, {
+    name: 'BBB',
+    id: 1
+  }, {
+    name: 'CCC',
+    id: 2
+  }, {
+    name: 'DDD',
+    id: 3
+  }];
+  var script$1 = {
+    data: function data() {
+      return {
+        sort: true,
+        sharedSelectVal: '1',
+        group2: {
+          name: 'shared'
+        },
+        group3: {
+          name: 'shared'
+        },
+        list: [{
+          name: 'AAA',
+          id: 0,
+          disable: false
+        }, {
+          name: 'BBB',
+          id: 1,
+          disable: false
+        }, {
+          name: 'CCC',
+          id: 2,
+          disable: false
+        }, {
+          name: 'DDD',
+          id: 3,
+          disable: false
+        }],
+        list2: list2,
+        list3: list3,
+        list4: list4,
+        list5: [{
+          name: 'AAA',
+          id: 0
+        }, {
+          name: 'BBB',
+          id: 1
+        }, {
+          name: 'CCC',
+          id: 2
+        }, {
+          name: 'DDD',
+          id: 3
+        }, {
+          name: 'EEE',
+          id: 4
+        }, {
+          name: 'FFF',
+          id: 5
+        }, {
+          name: 'III',
+          id: 6
+        }, {
+          name: 'JJJ',
+          id: 7
+        }, {
+          name: 'KKK',
+          id: 8
+        }],
+        list6: [{
+          name: 'AAA',
+          id: 0,
+          nested: true,
+          children: [{
+            name: 'EEE',
+            id: 4,
+            nested: true
+          }, {
+            name: 'FFF',
+            id: 5
+          }]
+        }, {
+          name: 'BBB',
+          id: 1,
+          nested: true,
+          children: [{
+            name: 'III',
+            id: 6,
+            nested: true
+          }]
+        }, {
+          name: 'CCC',
+          id: 2,
+          nested: true
+        }, {
+          name: 'DDD',
+          id: 3
+        }],
+        list7: list4,
+        expand: {
+          ghostClass: 'my-sortable-ghost',
+          chosenClass: 'my-sortable-chosen'
+        }
+      };
+    },
+    components: {
+      nestedLayout: nestedLayout
+    },
+    watch: {
+      sharedSelectVal: function sharedSelectVal(val) {
+        this.list2 = list2;
+        this.list3 = list3;
+
+        if (val === '1') {
+          this.sort = true;
+          this.group2 = {
+            name: 'shared'
+          };
+          this.group3 = {
+            name: 'shared'
+          };
+        } else if (val === '2') {
+          this.sort = true;
+          this.group2 = {
+            name: 'shared',
+            pull: 'clone'
+          };
+          this.group3 = {
+            name: 'shared',
+            pull: 'clone'
+          };
+        } else if (val === '3') {
+          this.group2 = {
+            name: 'shared',
+            pull: 'clone',
+            put: false
+          };
+          this.sort = false;
+          this.group3 = {
+            name: 'shared'
+          };
+        }
+      }
+    },
+    methods: {
+      handleDisable: function handleDisable(id) {
+        var _this = this;
+
+        this.list.forEach(function (item, index) {
+          if (item.id === id) {
+            _this.list[index].disable = !_this.list[index].disable;
+          }
+        });
+      },
+      handleId: function handleId(list, index) {
+        var curItem = list[index];
+
+        var newList = _toConsumableArray(list);
+
+        var maxNum = Math.max.apply(Math, _toConsumableArray(list.map(function (item) {
+          return item.id;
+        })));
+        var count = 0;
+        newList.forEach(function (item) {
+          if (item.id === curItem.id) {
+            count += 1;
+          }
+        });
+
+        if (count === 2) {
+          newList[index] = {
+            id: maxNum + 1,
+            name: curItem.name
+          };
+        }
+
+        return newList;
+      },
+      onAdd2: function onAdd2(e) {
+        this.list2 = _toConsumableArray(this.handleId(this.list2, e.newIndex));
+      },
+      onAdd3: function onAdd3(e) {
+        this.list3 = _toConsumableArray(this.handleId(this.list3, e.newIndex));
+      }
+    }
+  };
+
   var isOldIE = typeof navigator !== 'undefined' && /msie [6-9]\\b/.test(navigator.userAgent.toLowerCase());
   function createInjector(context) {
     return function (id, style) {
@@ -264,10 +481,10 @@
   var browser = createInjector;
 
   /* script */
-  const __vue_script__ = script;
+  const __vue_script__$1 = script$1;
 
   /* template */
-  var __vue_render__ = function() {
+  var __vue_render__$1 = function() {
     var _vm = this;
     var _h = _vm.$createElement;
     var _c = _vm._self._c || _h;
@@ -284,7 +501,7 @@
                 "vue-sort-layout",
                 {
                   staticClass: "list-group",
-                  attrs: { options: _vm.setOptions },
+                  attrs: { filter: "ignore-elements" },
                   model: {
                     value: _vm.list,
                     callback: function($$v) {
@@ -294,6 +511,327 @@
                   }
                 },
                 _vm._l(_vm.list, function(item) {
+                  return _c(
+                    "div",
+                    {
+                      key: item.id,
+                      class: [
+                        "list-group-item",
+                        { "ignore-elements": item.disable }
+                      ]
+                    },
+                    [
+                      _c(
+                        "button",
+                        {
+                          on: {
+                            click: function($event) {
+                              return _vm.handleDisable(item.id)
+                            }
+                          }
+                        },
+                        [_vm._v(_vm._s(item.disable ? "启用" : "禁用"))]
+                      ),
+                      _vm._v(" " + _vm._s(item.name))
+                    ]
+                  )
+                }),
+                0
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "code-box",
+              staticStyle: { float: "left", width: "500px" }
+            },
+            [_c("pre", [_vm._v(_vm._s(JSON.stringify(_vm.list, null, 4)))])]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("hr"),
+      _vm._v(" "),
+      _c("div", [
+        _c("h3", [_vm._v("共享列表")]),
+        _vm._v(" "),
+        _c("div", { staticStyle: { "margin-left": "50px" } }, [
+          _vm._v("\n      操作：\n      "),
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.sharedSelectVal,
+                  expression: "sharedSelectVal"
+                }
+              ],
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value;
+                      return val
+                    });
+                  _vm.sharedSelectVal = $event.target.multiple
+                    ? $$selectedVal
+                    : $$selectedVal[0];
+                }
+              }
+            },
+            [
+              _c("option", { attrs: { value: "1" } }, [_vm._v("无")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "2" } }, [_vm._v("复制")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "3" } }, [_vm._v("禁止排序")])
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "clear" }, [
+          _c(
+            "div",
+            { staticStyle: { float: "left", width: "400px" } },
+            [
+              _c(
+                "vue-sort-layout",
+                {
+                  staticClass: "list-group",
+                  attrs: { group: _vm.group2, sort: _vm.sort },
+                  on: { onAdd: _vm.onAdd2 },
+                  model: {
+                    value: _vm.list2,
+                    callback: function($$v) {
+                      _vm.list2 = $$v;
+                    },
+                    expression: "list2"
+                  }
+                },
+                _vm._l(_vm.list2, function(item) {
+                  return _c(
+                    "div",
+                    {
+                      key: item.id,
+                      class: ["list-group-item", { active: item.active }]
+                    },
+                    [_vm._v(_vm._s(item.name))]
+                  )
+                }),
+                0
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticStyle: { float: "left", width: "400px" } },
+            [
+              _c(
+                "vue-sort-layout",
+                {
+                  staticClass: "list-group",
+                  attrs: { group: _vm.group3 },
+                  on: { onAdd: _vm.onAdd3 },
+                  model: {
+                    value: _vm.list3,
+                    callback: function($$v) {
+                      _vm.list3 = $$v;
+                    },
+                    expression: "list3"
+                  }
+                },
+                _vm._l(_vm.list3, function(item) {
+                  return _c(
+                    "div",
+                    {
+                      key: item.id,
+                      class: ["list-group-item", { active: item.active }]
+                    },
+                    [_vm._v(_vm._s(item.name))]
+                  )
+                }),
+                0
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "code-box",
+              staticStyle: { float: "left", width: "400px" }
+            },
+            [
+              _c(
+                "div",
+                { staticStyle: { float: "left", "margin-right": "50px" } },
+                [_c("pre", [_vm._v(_vm._s(JSON.stringify(_vm.list2, null, 4)))])]
+              ),
+              _vm._v(" "),
+              _c("div", { staticStyle: { float: "left" } }, [
+                _c("pre", [_vm._v(_vm._s(JSON.stringify(_vm.list3, null, 4)))])
+              ])
+            ]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("hr"),
+      _vm._v(" "),
+      _c("div", [
+        _c("h3", [_vm._v("手柄")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "clear" }, [
+          _c(
+            "div",
+            { staticStyle: { float: "left", width: "500px" } },
+            [
+              _c(
+                "vue-sort-layout",
+                {
+                  staticClass: "list-group",
+                  attrs: { handle: "handle" },
+                  model: {
+                    value: _vm.list4,
+                    callback: function($$v) {
+                      _vm.list4 = $$v;
+                    },
+                    expression: "list4"
+                  }
+                },
+                _vm._l(_vm.list4, function(item) {
+                  return _c(
+                    "div",
+                    { key: item.id, staticClass: "list-group-item" },
+                    [
+                      _c("span", { staticClass: "handle" }, [_vm._v("❖")]),
+                      _vm._v(_vm._s(item.name))
+                    ]
+                  )
+                }),
+                0
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "code-box",
+              staticStyle: { float: "left", width: "500px" }
+            },
+            [_c("pre", [_vm._v(_vm._s(JSON.stringify(_vm.list4, null, 4)))])]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("hr"),
+      _vm._v(" "),
+      _c("div", [
+        _c("h3", [_vm._v("组(占位符)")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "clear" }, [
+          _c(
+            "div",
+            { staticStyle: { float: "left", width: "500px" } },
+            [
+              _c(
+                "vue-sort-layout",
+                {
+                  staticClass: "list-group clear",
+                  attrs: { ghostClass: "ghost-class" },
+                  model: {
+                    value: _vm.list5,
+                    callback: function($$v) {
+                      _vm.list5 = $$v;
+                    },
+                    expression: "list5"
+                  }
+                },
+                _vm._l(_vm.list5, function(item) {
+                  return _c("div", { key: item.id, staticClass: "group-item" }, [
+                    _vm._v(_vm._s(item.name))
+                  ])
+                }),
+                0
+              )
+            ],
+            1
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("hr"),
+      _vm._v(" "),
+      _c("div", [
+        _c("h3", [_vm._v("嵌套排序")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "clear" }, [
+          _c(
+            "div",
+            { staticStyle: { float: "left", width: "500px" } },
+            [
+              _c("nested-layout", {
+                attrs: { nested: true },
+                model: {
+                  value: _vm.list6,
+                  callback: function($$v) {
+                    _vm.list6 = $$v;
+                  },
+                  expression: "list6"
+                }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "code-box",
+              staticStyle: { float: "left", width: "500px" }
+            },
+            [_c("pre", [_vm._v(_vm._s(JSON.stringify(_vm.list6, null, 4)))])]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("hr"),
+      _vm._v(" "),
+      _c("div", [
+        _c("h3", [_vm._v("拓展")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "clear" }, [
+          _c(
+            "div",
+            { staticStyle: { float: "left", width: "500px" } },
+            [
+              _c(
+                "vue-sort-layout",
+                {
+                  staticClass: "list-group",
+                  attrs: { expand: _vm.expand },
+                  model: {
+                    value: _vm.list7,
+                    callback: function($$v) {
+                      _vm.list7 = $$v;
+                    },
+                    expression: "list7"
+                  }
+                },
+                _vm._l(_vm.list7, function(item) {
                   return _c(
                     "div",
                     { key: item.id, staticClass: "list-group-item" },
@@ -306,114 +844,44 @@
             1
           ),
           _vm._v(" "),
-          _c("div", { staticStyle: { float: "left", width: "500px" } }, [
-            _vm._v("\n        list： " + _vm._s(_vm.list) + "\n      ")
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", [
-        _c("h3", [_vm._v("共享列表")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "clear" }, [
           _c(
             "div",
-            { staticStyle: { float: "left", width: "400px" } },
-            [
-              _c(
-                "vue-sort-layout",
-                {
-                  staticClass: "list-group",
-                  attrs: {
-                    group: { name: "shared", pull: "clone" },
-                    options: _vm.setOptions
-                  },
-                  model: {
-                    value: _vm.list2,
-                    callback: function($$v) {
-                      _vm.list2 = $$v;
-                    },
-                    expression: "list2"
-                  }
-                },
-                _vm._l(_vm.list2, function(item, index) {
-                  return _c(
-                    "div",
-                    { key: index, staticClass: "list-group-item" },
-                    [_vm._v(_vm._s(item.name))]
-                  )
-                }),
-                0
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticStyle: { float: "left", width: "400px" } },
-            [
-              _c(
-                "vue-sort-layout",
-                {
-                  staticClass: "list-group",
-                  attrs: { group: "shared", options: _vm.setOptions },
-                  model: {
-                    value: _vm.list3,
-                    callback: function($$v) {
-                      _vm.list3 = $$v;
-                    },
-                    expression: "list3"
-                  }
-                },
-                _vm._l(_vm.list3, function(item, index) {
-                  return _c(
-                    "div",
-                    { key: index, staticClass: "list-group-item" },
-                    [_vm._v(_vm._s(item.name))]
-                  )
-                }),
-                0
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c("div", { staticStyle: { float: "left", width: "400px" } }, [
-            _c("div", [_vm._v(" list2： " + _vm._s(_vm.list2))]),
-            _vm._v(" "),
-            _c("div", [_vm._v(" list3： " + _vm._s(_vm.list3))])
-          ])
+            {
+              staticClass: "code-box",
+              staticStyle: { float: "left", width: "500px" }
+            },
+            [_c("pre", [_vm._v(_vm._s(JSON.stringify(_vm.list7, null, 4)))])]
+          )
         ])
       ])
     ])
   };
-  var __vue_staticRenderFns__ = [];
-  __vue_render__._withStripped = true;
+  var __vue_staticRenderFns__$1 = [];
+  __vue_render__$1._withStripped = true;
 
     /* style */
-    const __vue_inject_styles__ = function (inject) {
+    const __vue_inject_styles__$1 = function (inject) {
       if (!inject) return
-      inject("data-v-bd3e5706_0", { source: "\nbody {\r\n  margin: 0;\r\n  padding: 0;\n}\n.list-group-item{\r\n  padding:10px;\r\n  border:1px solid #ddd;\r\n  margin:10px;\n}\n.list-group{\r\n  padding:20px;\r\n   border:1px solid #ddd;\r\n   margin:20px;\n}\n.clear:after{\r\n  display:block;\r\n  clear:both;\r\n  content:\"\";\r\n  visibility:hidden;\r\n  height:0\n}\n.blue-background-class{\r\n  background-color: burlywood\n}\n.shared-item{\r\n  background-color:darkseagreen\n}\n.list-shared{\r\n  width: 300px;\r\n  float:left;\n}\r\n", map: {"version":3,"sources":["G:\\works\\vue-sort-layout\\examples\\src\\App.vue"],"names":[],"mappings":";AAuCA;EACA,SAAA;EACA,UAAA;AACA;AACA;EACA,YAAA;EACA,qBAAA;EACA,WAAA;AACA;AACA;EACA,YAAA;GACA,qBAAA;GACA,WAAA;AACA;AACA;EACA,aAAA;EACA,UAAA;EACA,UAAA;EACA,iBAAA;EACA;AACA;AACA;EACA;AACA;AACA;EACA;AACA;AACA;EACA,YAAA;EACA,UAAA;AAEA","file":"App.vue","sourcesContent":["<template>\r\n  <div>\r\n    <div>\r\n      <h3>基础</h3>\r\n      <div class=\"clear\">\r\n        <div style=\"float: left; width: 500px\">\r\n          <vue-sort-layout v-model=\"list\" class=\"list-group\"  :options=\"setOptions\">\r\n            <div class=\"list-group-item\" v-for=\"item in list\" :key=\"item.id\">{{item.name}}</div>\r\n          </vue-sort-layout>\r\n        </div>\r\n        <div style=\"float: left;width: 500px\">\r\n          list： {{list}}\r\n        </div>\r\n      </div>\r\n    </div>\r\n    \r\n    <div>\r\n      <h3>共享列表</h3>\r\n      <div class=\"clear\">\r\n        <div style=\"float: left; width: 400px\">\r\n          <vue-sort-layout v-model=\"list2\" :group=\"{ name: 'shared', pull: 'clone' }\" class=\"list-group\"  :options=\"setOptions\">\r\n            <div class=\"list-group-item\" v-for=\"(item, index) in list2\" :key=\"index\">{{item.name}}</div>\r\n          </vue-sort-layout>\r\n        </div>\r\n        <div style=\"float: left; width: 400px\">\r\n          <vue-sort-layout v-model=\"list3\" group='shared' class=\"list-group\"  :options=\"setOptions\">\r\n            <div class=\"list-group-item\" v-for=\"(item, index) in list3\" :key=\"index\">{{item.name}}</div>\r\n          </vue-sort-layout>\r\n        </div>\r\n        <div style=\"float: left;width: 400px\">\r\n          <div> list2： {{list2}}</div>\r\n          <div> list3： {{list3}}</div>\r\n         \r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</template>\r\n<style>\r\nbody {\r\n  margin: 0;\r\n  padding: 0;\r\n}\r\n.list-group-item{\r\n  padding:10px;\r\n  border:1px solid #ddd;\r\n  margin:10px;\r\n}\r\n.list-group{\r\n  padding:20px;\r\n   border:1px solid #ddd;\r\n   margin:20px;\r\n}\r\n.clear:after{\r\n  display:block;\r\n  clear:both;\r\n  content:\"\";\r\n  visibility:hidden;\r\n  height:0\r\n  }\r\n.blue-background-class{\r\n  background-color: burlywood\r\n}\r\n.shared-item{\r\n  background-color:darkseagreen\r\n}\r\n.list-shared{\r\n  width: 300px;\r\n  float:left;\r\n  \r\n}\r\n</style>\r\n<script>\r\nexport default {\r\n  data() {\r\n    return {\r\n      list: [\r\n        {\r\n          name: 'Jaa',\r\n          id: 0,\r\n        },\r\n        {\r\n          name: 'Jbb',\r\n          id: 1,\r\n          disable: true,\r\n        },\r\n        {\r\n          name: 'Jcc',\r\n          id: 2,\r\n        },\r\n        {\r\n          name: 'Jee',\r\n          id: 3,\r\n        },\r\n      ],\r\n      list2: [\r\n        {\r\n          name: 'Jaa',\r\n          id: 0,\r\n        },\r\n        {\r\n          name: 'Jbb',\r\n          id: 1,\r\n        },\r\n        {\r\n          name: 'Jcc',\r\n          id: 2,\r\n        },\r\n        {\r\n          name: 'Jee',\r\n          id: 3,\r\n        },\r\n      ],\r\n      list3: [\r\n        {\r\n          name: 'Jff',\r\n          id: 4,\r\n        },\r\n        {\r\n          name: 'Jhh',\r\n          id: 5,\r\n        },\r\n        {\r\n          name: 'Jii',\r\n          id: 6,\r\n        },\r\n        {\r\n          name: 'Jjj',\r\n          id: 7,\r\n        },\r\n      ],\r\n      setOptions: {\r\n        ghostClass: 'blue-background-class',\r\n      },\r\n    };\r\n  },\r\n};\r\n</script>"]}, media: undefined });
+      inject("data-v-ec8bb068_0", { source: "\nbody {\r\n  margin: 0;\r\n  padding: 20px;\n}\n.list-group-item{\r\n  padding:10px;\r\n  border:1px solid #ddd;\r\n  margin:10px;\n}\n.group-item{\r\n  width: 100px;\r\n  text-align: center;\r\n  line-height: 100px;\r\n  height:100px;\r\n  border:1px solid #ddd;\r\n  margin:10px;\r\n  float:left\n}\n.list-group{\r\n  padding:20px;\r\n   border:1px solid #ddd;\r\n   margin:20px;\n}\n.clear:after{\r\n  display:block;\r\n  clear:both;\r\n  content:\"\";\r\n  visibility:hidden;\r\n  height:0\n}\n.my-sortable-ghost{\r\n  opacity: .5;\n}\n.my-sortable-chosen{\r\n    border: 1px dashed red;\r\n    color: red\n}\n.shared-item{\r\n  background-color:darkseagreen\n}\n.list-shared{\r\n  width: 300px;\r\n  float:left;\n}\n.ignore-elements{\r\n  background-color: red;\r\n  cursor: default\n}\n.code-box{\r\n  border: 1px solid #ddd;\r\n  padding: 20px;\r\n  background-color: #f5f5f5;\r\n  border-radius: 10px;\n}\n.active{\r\n  background-color: #fff6b2;\n}\n.handle{\r\n  cursor:move;\r\n  display:inline-block;\r\n  padding: 0 5px;\n}\n.ghost-class{\r\n  background-color: #C8EBFB;\n}\r\n", map: {"version":3,"sources":["G:\\works\\vue-sort-layout\\examples\\src\\App.vue"],"names":[],"mappings":";AAoVA;EACA,SAAA;EACA,aAAA;AACA;AACA;EACA,YAAA;EACA,qBAAA;EACA,WAAA;AACA;AACA;EACA,YAAA;EACA,kBAAA;EACA,kBAAA;EACA,YAAA;EACA,qBAAA;EACA,WAAA;EACA;AACA;AACA;EACA,YAAA;GACA,qBAAA;GACA,WAAA;AACA;AACA;EACA,aAAA;EACA,UAAA;EACA,UAAA;EACA,iBAAA;EACA;AACA;AACA;EACA,WAAA;AACA;AACA;IACA,sBAAA;IACA;AACA;AAEA;EACA;AACA;AACA;EACA,YAAA;EACA,UAAA;AAEA;AACA;EACA,qBAAA;EACA;AACA;AACA;EACA,sBAAA;EACA,aAAA;EACA,yBAAA;EACA,mBAAA;AACA;AACA;EACA,yBAAA;AACA;AACA;EACA,WAAA;EACA,oBAAA;EACA,cAAA;AACA;AACA;EACA,yBAAA;AACA","file":"App.vue","sourcesContent":["<template>\r\n  <div>\r\n    <div>\r\n      <h3>基础</h3>\r\n      <div class=\"clear\">\r\n        <div style=\"float: left; width: 500px\">\r\n          <vue-sort-layout v-model=\"list\" class=\"list-group\" filter=\"ignore-elements\" >\r\n            <div :class=\"['list-group-item', { 'ignore-elements': item.disable }]\" v-for=\"item in list\" :key=\"item.id\"><button @click=\"handleDisable(item.id)\">{{ item.disable ? '启用' : '禁用'}}</button> {{item.name}}</div>\r\n          </vue-sort-layout>\r\n        </div>\r\n        <div class=\"code-box\" style=\"float: left;width: 500px\">\r\n          <pre>{{JSON.stringify(list, null, 4)}}</pre>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <hr />\r\n    <div>\r\n      <h3>共享列表</h3>\r\n      <div style=\"margin-left:50px\">\r\n        操作：\r\n        <select v-model=\"sharedSelectVal\">\r\n          <option value=\"1\">无</option>\r\n          <option value=\"2\">复制</option>\r\n          <option value=\"3\">禁止排序</option>\r\n        </select>\r\n      </div>\r\n      <div class=\"clear\">\r\n        <div style=\"float: left; width: 400px\">\r\n          <vue-sort-layout v-model=\"list2\" :group=\"group2\" :sort=\"sort\" class=\"list-group\"  @onAdd=\"onAdd2\"  >\r\n            <div :class=\"['list-group-item', { active: item.active }]\" v-for=\"item in list2\" :key=\"item.id\">{{item.name}}</div>\r\n          </vue-sort-layout>\r\n        </div>\r\n        <div style=\"float: left; width: 400px\">\r\n          <vue-sort-layout v-model=\"list3\" :group=\"group3\" class=\"list-group\" @onAdd=\"onAdd3\"  >\r\n            <div :class=\"['list-group-item', { active: item.active }]\" v-for=\"item in list3\" :key=\"item.id\">{{item.name}}</div>\r\n          </vue-sort-layout>\r\n        </div>\r\n        <div  class=\"code-box\"  style=\"float: left;width: 400px\">\r\n          <div style=\"float:left; margin-right:50px\"> <pre>{{JSON.stringify(list2, null, 4)}}</pre></div>\r\n          <div style=\"float:left\"> <pre>{{JSON.stringify(list3, null, 4)}}</pre></div>\r\n         \r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <hr />\r\n    <div>\r\n      <h3>手柄</h3>\r\n      <div class=\"clear\">\r\n        <div style=\"float: left; width: 500px\">\r\n          <vue-sort-layout v-model=\"list4\" class=\"list-group\" handle=\"handle\" >\r\n            <div class=\"list-group-item\" v-for=\"item in list4\" :key=\"item.id\"><span class=\"handle\">❖</span>{{item.name}}</div>\r\n          </vue-sort-layout>\r\n        </div>\r\n        <div class=\"code-box\" style=\"float: left;width: 500px\">\r\n          <pre>{{JSON.stringify(list4, null, 4)}}</pre>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <hr />\r\n    <div>\r\n      <h3>组(占位符)</h3>\r\n      <div class=\"clear\">\r\n        <div style=\"float: left; width: 500px\">\r\n          <vue-sort-layout v-model=\"list5\" ghostClass=\"ghost-class\" class=\"list-group clear\" >\r\n            <div class=\"group-item\" v-for=\"item in list5\" :key=\"item.id\">{{item.name}}</div>\r\n          </vue-sort-layout>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <hr />\r\n    <div>\r\n      <h3>嵌套排序</h3>\r\n      <div class=\"clear\">\r\n        <div style=\"float: left; width: 500px\">\r\n          <nested-layout v-model=\"list6\" :nested=\"true\"></nested-layout>\r\n        </div>\r\n        <div class=\"code-box\" style=\"float: left;width: 500px\">\r\n          <pre>{{JSON.stringify(list6, null, 4)}}</pre>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <hr />\r\n    <div>\r\n      <h3>拓展</h3>\r\n      <div class=\"clear\">\r\n        <div style=\"float: left; width: 500px\">\r\n          <vue-sort-layout v-model=\"list7\" class=\"list-group\" :expand=\"expand\" >\r\n            <div class=\"list-group-item\" v-for=\"item in list7\" :key=\"item.id\">{{item.name}}</div>\r\n          </vue-sort-layout>\r\n        </div>\r\n        <div class=\"code-box\" style=\"float: left;width: 500px\">\r\n          <pre>{{JSON.stringify(list7, null, 4)}}</pre>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n  </div>\r\n</template>\r\n\r\n<script>\r\nimport nestedLayout from './NestedLayout.vue';\r\n\r\nconst list2 = [\r\n  {\r\n    name: 'AAA',\r\n    id: 0,\r\n  },\r\n  {\r\n    name: 'BBB',\r\n    id: 1,\r\n  },\r\n  {\r\n    name: 'CCC',\r\n    id: 2,\r\n  },\r\n  {\r\n    name: 'DDD',\r\n    id: 3,\r\n  },\r\n];\r\nconst list3 = [\r\n  {\r\n    name: 'EEE',\r\n    id: 4,\r\n    active: true,\r\n  },\r\n  {\r\n    name: 'FFF',\r\n    id: 5,\r\n    active: true,\r\n  },\r\n  {\r\n    name: 'HHH',\r\n    id: 6,\r\n    active: true,\r\n  },\r\n  {\r\n    name: 'III',\r\n    id: 7,\r\n    active: true,\r\n  },\r\n];\r\nconst list4 = [\r\n  {\r\n    name: 'AAA',\r\n    id: 0,\r\n  },\r\n  {\r\n    name: 'BBB',\r\n    id: 1,\r\n  },\r\n  {\r\n    name: 'CCC',\r\n    id: 2,\r\n  },\r\n  {\r\n    name: 'DDD',\r\n    id: 3,\r\n  },\r\n];\r\nexport default {\r\n  data() {\r\n    return {\r\n      sort: true,\r\n      sharedSelectVal: '1',\r\n      group2: { name: 'shared' },\r\n      group3: { name: 'shared' },\r\n      list: [\r\n        {\r\n          name: 'AAA',\r\n          id: 0,\r\n          disable: false,\r\n        },\r\n        {\r\n          name: 'BBB',\r\n          id: 1,\r\n          disable: false,\r\n        },\r\n        {\r\n          name: 'CCC',\r\n          id: 2,\r\n          disable: false,\r\n        },\r\n        {\r\n          name: 'DDD',\r\n          id: 3,\r\n          disable: false,\r\n        },\r\n      ],\r\n      list2,\r\n      list3,\r\n      list4,\r\n      list5: [\r\n        {\r\n          name: 'AAA',\r\n          id: 0,\r\n        },\r\n        {\r\n          name: 'BBB',\r\n          id: 1,\r\n        },\r\n        {\r\n          name: 'CCC',\r\n          id: 2,\r\n        },\r\n        {\r\n          name: 'DDD',\r\n          id: 3,\r\n        },\r\n        {\r\n          name: 'EEE',\r\n          id: 4,\r\n        },\r\n        {\r\n          name: 'FFF',\r\n          id: 5,\r\n        },\r\n        {\r\n          name: 'III',\r\n          id: 6,\r\n        },\r\n        {\r\n          name: 'JJJ',\r\n          id: 7,\r\n        },\r\n        {\r\n          name: 'KKK',\r\n          id: 8,\r\n        },\r\n      ],\r\n      list6: [\r\n        {\r\n          name: 'AAA',\r\n          id: 0,\r\n          nested: true,\r\n          children: [\r\n            {\r\n              name: 'EEE',\r\n              id: 4,\r\n              nested: true,\r\n            },\r\n            {\r\n              name: 'FFF',\r\n              id: 5,\r\n            },\r\n          ],\r\n        },\r\n        {\r\n          name: 'BBB',\r\n          id: 1,\r\n          nested: true,\r\n          children: [\r\n            {\r\n              name: 'III',\r\n              id: 6,\r\n              nested: true,\r\n            },\r\n          ],\r\n        },\r\n        {\r\n          name: 'CCC',\r\n          id: 2,\r\n          nested: true,\r\n        },\r\n        {\r\n          name: 'DDD',\r\n          id: 3,\r\n        },\r\n      ],\r\n      list7: list4,\r\n      expand: {\r\n        ghostClass: 'my-sortable-ghost',\r\n        chosenClass: 'my-sortable-chosen', \r\n      },\r\n    };\r\n  },\r\n  components: {\r\n    nestedLayout,\r\n  },\r\n  watch: {\r\n    sharedSelectVal(val) {\r\n      this.list2 = list2;\r\n      this.list3 = list3;\r\n      if (val === '1') {\r\n        this.sort = true;\r\n        this.group2 = { name: 'shared' };\r\n        this.group3 = { name: 'shared' };\r\n      } else if (val === '2') {\r\n        this.sort = true;\r\n        this.group2 = { name: 'shared', pull: 'clone' };\r\n        this.group3 = { name: 'shared', pull: 'clone' };\r\n      } else if (val === '3') {\r\n        this.group2 = { name: 'shared', pull: 'clone', put: false };\r\n        this.sort = false;\r\n        this.group3 = { name: 'shared' };\r\n      }\r\n    },\r\n  },\r\n  methods: {\r\n    \r\n    handleDisable(id) {\r\n      this.list.forEach((item, index) => {\r\n        if (item.id === id) {\r\n          this.list[index].disable = !this.list[index].disable;\r\n        } \r\n      });\r\n    },\r\n    handleId(list, index) {\r\n      const curItem = list[index];\r\n      const newList = [...list];\r\n      const maxNum = Math.max(...list.map((item) => item.id));\r\n      let count = 0; \r\n      newList.forEach((item) => {\r\n        if (item.id === curItem.id) {\r\n          count += 1;\r\n        }\r\n      });\r\n      if (count === 2) {\r\n        newList[index] = {\r\n          id: maxNum + 1,\r\n          name: curItem.name,\r\n        };\r\n      }\r\n      return newList;\r\n    },\r\n    onAdd2(e) {\r\n      this.list2 = [...this.handleId(this.list2, e.newIndex)];\r\n    },\r\n    onAdd3(e) {\r\n      this.list3 = [...this.handleId(this.list3, e.newIndex)];\r\n    },\r\n  },\r\n};\r\n</script>\r\n\r\n<style>\r\nbody {\r\n  margin: 0;\r\n  padding: 20px;\r\n}\r\n.list-group-item{\r\n  padding:10px;\r\n  border:1px solid #ddd;\r\n  margin:10px;\r\n}\r\n.group-item{\r\n  width: 100px;\r\n  text-align: center;\r\n  line-height: 100px;\r\n  height:100px;\r\n  border:1px solid #ddd;\r\n  margin:10px;\r\n  float:left\r\n}\r\n.list-group{\r\n  padding:20px;\r\n   border:1px solid #ddd;\r\n   margin:20px;\r\n}\r\n.clear:after{\r\n  display:block;\r\n  clear:both;\r\n  content:\"\";\r\n  visibility:hidden;\r\n  height:0\r\n  }\r\n.my-sortable-ghost{\r\n  opacity: .5;\r\n}\r\n.my-sortable-chosen{\r\n    border: 1px dashed red;\r\n    color: red\r\n}\r\n\r\n.shared-item{\r\n  background-color:darkseagreen\r\n}\r\n.list-shared{\r\n  width: 300px;\r\n  float:left;\r\n  \r\n}\r\n.ignore-elements{\r\n  background-color: red;\r\n  cursor: default\r\n}\r\n.code-box{\r\n  border: 1px solid #ddd;\r\n  padding: 20px;\r\n  background-color: #f5f5f5;\r\n  border-radius: 10px;\r\n}\r\n.active{\r\n  background-color: #fff6b2;\r\n}\r\n.handle{\r\n  cursor:move;\r\n  display:inline-block;\r\n  padding: 0 5px;\r\n}\r\n.ghost-class{\r\n  background-color: #C8EBFB;\r\n}\r\n</style>"]}, media: undefined });
 
     };
     /* scoped */
-    const __vue_scope_id__ = undefined;
+    const __vue_scope_id__$1 = undefined;
     /* module identifier */
-    const __vue_module_identifier__ = undefined;
+    const __vue_module_identifier__$1 = undefined;
     /* functional template */
-    const __vue_is_functional_template__ = false;
+    const __vue_is_functional_template__$1 = false;
     /* style inject SSR */
     
 
     
     var App = normalizeComponent_1(
-      { render: __vue_render__, staticRenderFns: __vue_staticRenderFns__ },
-      __vue_inject_styles__,
-      __vue_script__,
-      __vue_scope_id__,
-      __vue_is_functional_template__,
-      __vue_module_identifier__,
+      { render: __vue_render__$1, staticRenderFns: __vue_staticRenderFns__$1 },
+      __vue_inject_styles__$1,
+      __vue_script__$1,
+      __vue_scope_id__$1,
+      __vue_is_functional_template__$1,
+      __vue_module_identifier__$1,
       browser,
       undefined
     );
@@ -3354,12 +3822,29 @@
   Sortable.mount(new AutoScrollPlugin());
   Sortable.mount(Remove, Revert); //
 
-  var script$1 = {
+  function getListFromNodes(nodes) {
+    const newList = [];
+    nodes.forEach(node => {
+      newList.push(node.dataItem);
+    });
+    return newList;
+  }
+
+  function eventFun(name, event) {
+    this.$emit(name, event);
+  }
+
+  var script$2 = {
     data() {
       return {
-        basisOptions: {
+        options: {
           animation: 150,
-          onSort: this.onSort
+          onAdd: this.onAdd,
+          onSort: this.onSort,
+          onRemove: this.onRemove,
+          onStart: eventFun.bind(this, 'onStart'),
+          onEnd: eventFun.bind(this, 'onEnd'),
+          onClone: eventFun.bind(this, 'onClone')
         }
       };
     },
@@ -3373,77 +3858,89 @@
         type: Array,
         default: () => []
       },
+      filter: {
+        type: String,
+        default: ''
+      },
+      sort: {
+        type: Boolean,
+        default: true
+      },
+      handle: {
+        type: String,
+        default: ''
+      },
+      ghostClass: {
+        type: String,
+        default: ''
+      },
+      nested: {
+        type: Boolean,
+        default: true
+      },
       group: [String, Object],
-      options: {
+      expand: {
         type: Object,
         default: () => {}
       }
     },
-
-    provide() {
-      const rootOptions = Object.assign(this.basisOptions, this.options);
-      return {
-        uid: this._uid,
-        rootOptions
-      };
-    },
-
     methods: {
+      onAdd(event) {
+        const nodes = event.to.childNodes;
+        this.$emit('change', getListFromNodes(nodes));
+        nodes.forEach(node => node === event.item && node.remove());
+        this.$emit('onAdd', event);
+      },
+
+      onRemove(event) {
+        if (event.pullMode === true) {
+          this.$emit('change', getListFromNodes(event.from.childNodes));
+        }
+
+        this.$emit('onRemove', event);
+      },
+
       onSort(event) {
-        this.updatePosition(event.item.dataItem);
-      },
+        if (event.pullMode === undefined) {
+          this.$emit('change', getListFromNodes(event.to.childNodes));
+        }
 
-      // onAdd(event) {
-      //   // const { newIndex, oldIndex } = event;
-      //   console.log('onAdd', event);
-      //   // this.list.splice(newIndex, 0, this.list.splice(oldIndex, 1)[0]);
-      // },
-      updatePosition(curDataItem) {
-        const newList = [];
-        this.$refs.root.childNodes.forEach(node => {
-          if (node.dataItem) {
-            newList.push(node.dataItem);
-          } else {
-            newList.push(curDataItem);
-          }
-        });
-        console.log(this.$refs.root.childNodes);
-        this.$emit('change', newList);
-      },
-
-      setElchildNodes(root) {
-        const disableIds = this.list.filter(item => item.disable).map(item => item.id);
-        root.childNodes.forEach((node, i) => {
-          const n = node;
-          n.dataItem = this.list[i];
-
-          if (disableIds.indexOf(i) >= 0) {
-            const className = node.getAttribute('class');
-            n.setAttribute('class', className.concat(' disable'));
-            this.basisOptions.filter = '.disable';
-          }
-        });
+        this.$emit('onSort', event);
       },
 
       setProps() {
-        if (this.group) this.basisOptions.group = this.group;
+        if (this.nested) {
+          this.options.group = 'nested';
+          this.options.fallbackOnBody = true;
+          this.options.swapThreshold = 0.65;
+        }
+
+        if (this.group) this.options.group = this.group;
+        if (this.filter) this.options.filter = `.${this.filter}`;
+        if (this.handle) this.options.handle = `.${this.handle}`;
+        if (this.ghostClass) this.options.ghostClass = this.ghostClass;
+        this.options.sort = this.sort;
+      },
+
+      createSortable() {
+        const rootOptions = Object.assign(this.options, this.expand);
+        this.$el.childNodes.forEach((node, index) => {
+          const n = node;
+          n.dataItem = this.list[index];
+        });
+        this.setProps();
+        if (this.sortable !== undefined) this.sortable.destroy();
+        this.sortable = new Sortable(this.$el, rootOptions);
       }
 
     },
 
     updated() {
-      this.setElchildNodes(this.$refs.root);
+      this.createSortable();
     },
 
     mounted() {
-      if (this.$children.length) return;
-      const {
-        root
-      } = this.$refs;
-      const rootOptions = Object.assign(this.basisOptions, this.options);
-      this.setElchildNodes(root);
-      this.setProps();
-      Sortable.create(root, rootOptions);
+      this.createSortable();
     }
 
   };
@@ -3534,146 +4031,44 @@
   var normalizeComponent_1$1 = normalizeComponent$1;
   /* script */
 
-  const __vue_script__$1 = script$1;
+  const __vue_script__$2 = script$2;
   /* template */
 
-  var __vue_render__$1 = function () {
+  var __vue_render__$2 = function () {
     var _vm = this;
 
     var _h = _vm.$createElement;
 
     var _c = _vm._self._c || _h;
 
-    return _c("div", {
-      ref: "root"
-    }, [_vm._t("default")], 2);
+    return _c("div", [_vm._t("default")], 2);
   };
 
-  var __vue_staticRenderFns__$1 = [];
-  __vue_render__$1._withStripped = true;
+  var __vue_staticRenderFns__$2 = [];
+  __vue_render__$2._withStripped = true;
   /* style */
 
-  const __vue_inject_styles__$1 = undefined;
+  const __vue_inject_styles__$2 = undefined;
   /* scoped */
 
-  const __vue_scope_id__$1 = undefined;
+  const __vue_scope_id__$2 = undefined;
   /* module identifier */
 
-  const __vue_module_identifier__$1 = undefined;
+  const __vue_module_identifier__$2 = undefined;
   /* functional template */
 
-  const __vue_is_functional_template__$1 = false;
+  const __vue_is_functional_template__$2 = false;
   /* style inject */
 
   /* style inject SSR */
 
   var VueSortLayout = normalizeComponent_1$1({
-    render: __vue_render__$1,
-    staticRenderFns: __vue_staticRenderFns__$1
-  }, __vue_inject_styles__$1, __vue_script__$1, __vue_scope_id__$1, __vue_is_functional_template__$1, __vue_module_identifier__$1, undefined, undefined); //
-
-  var script$1$1 = {
-    data() {
-      return {};
-    },
-
-    props: {
-      options: {
-        type: Object,
-        default: () => {}
-      },
-      pull: [String, Boolean],
-      put: Boolean,
-      sort: [String, Boolean]
-    },
-    inject: ['uid', 'rootOptions'],
-    computed: {
-      groupOptions() {
-        const options = {
-          group: {
-            name: `shared-${this.uid}`
-          }
-        };
-
-        if (typeof this.pull !== 'undefined') {
-          options.group.pull = this.pull;
-        }
-
-        if (typeof this.put === 'boolean' && !this.put) {
-          // console.log(this.put);
-          console.log(typeof this.put);
-          options.group.put = false;
-        }
-
-        if (typeof this.sort !== 'undefined') {
-          options.sort = this.sort;
-        } // if (this.noSort) {
-        //   options.sort = false;
-        // }
-        // if (this.noPut) {
-        //   options.group.put = false;
-        // }
-
-
-        return options;
-      }
-
-    },
-    methods: {
-      mergeOptions() {}
-
-    },
-
-    mounted() {
-      const el = this.$refs.shared;
-      const options = Object.assign(this.groupOptions, this.rootOptions, this.options);
-      Sortable.create(el, options);
-    }
-
-  };
-  /* script */
-
-  const __vue_script__$1$1 = script$1$1;
-  /* template */
-
-  var __vue_render__$1$1 = function () {
-    var _vm = this;
-
-    var _h = _vm.$createElement;
-
-    var _c = _vm._self._c || _h;
-
-    return _c("div", {
-      ref: "shared"
-    }, [_vm._t("default")], 2);
-  };
-
-  var __vue_staticRenderFns__$1$1 = [];
-  __vue_render__$1$1._withStripped = true;
-  /* style */
-
-  const __vue_inject_styles__$1$1 = undefined;
-  /* scoped */
-
-  const __vue_scope_id__$1$1 = undefined;
-  /* module identifier */
-
-  const __vue_module_identifier__$1$1 = undefined;
-  /* functional template */
-
-  const __vue_is_functional_template__$1$1 = false;
-  /* style inject */
-
-  /* style inject SSR */
-
-  var VueSortShared = normalizeComponent_1$1({
-    render: __vue_render__$1$1,
-    staticRenderFns: __vue_staticRenderFns__$1$1
-  }, __vue_inject_styles__$1$1, __vue_script__$1$1, __vue_scope_id__$1$1, __vue_is_functional_template__$1$1, __vue_module_identifier__$1$1, undefined, undefined);
+    render: __vue_render__$2,
+    staticRenderFns: __vue_staticRenderFns__$2
+  }, __vue_inject_styles__$2, __vue_script__$2, __vue_scope_id__$2, __vue_is_functional_template__$2, __vue_module_identifier__$2, undefined, undefined);
 
   const install = Vue => {
     Vue.component('VueSortLayout', VueSortLayout);
-    Vue.component('VueSortShared', VueSortShared);
   };
 
   var main = {
