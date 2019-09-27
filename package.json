@@ -1,6 +1,6 @@
 {
   "name": "vue-sort-layout",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "一个vue.js的排序布局组件",
   "main": "lib/main.js",
   "files": [
