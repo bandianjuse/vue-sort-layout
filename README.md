@@ -101,3 +101,23 @@ list = [
 
 ### expand \<Object> 
 > 拓展。详情配置可以参考 https://github.com/SortableJS/Sortable
+
+## 事件
+
+### onAdd 
+> @onAdd="handleAddEvent"  元素从另一个列表中拖放到列表中调用。
+
+### onRemove 
+> @onRemove="handleRemoveEvent"  元素从另一个列表中移除到列表调用。
+
+### onSort 
+> @onSort="handleSortEvent"  列表中有任何元素排序时调用。
+
+### onStart 
+> @onStart="handleStartEvent"  元素拖动开始时调用。
+
+### onEnd 
+> @onEnd="handleEndEvent"  元素拖动结束时调用。
+
+### onClone 
+> @onClone="handleCloneEvent"  创建元素的克隆时调用。
