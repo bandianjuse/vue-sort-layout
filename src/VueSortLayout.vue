@@ -113,6 +113,9 @@ export default {
   updated() {
     this.createSortable();
   },
+  destroyed() {
+    this.sortable.destroy();
+  },
   mounted() {
     this.createSortable();
   },

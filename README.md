@@ -108,7 +108,7 @@ list = [
 > @onAdd="handleAddEvent"  元素从另一个列表中拖放到列表中调用。
 
 ### onRemove 
-> @onRemove="handleRemoveEvent"  元素从另一个列表中移除到列表调用。
+> @onRemove="handleRemoveEvent"  元素      从另一个列表中移除到列表调用。
 
 ### onSort 
 > @onSort="handleSortEvent"  列表中有任何元素排序时调用。
